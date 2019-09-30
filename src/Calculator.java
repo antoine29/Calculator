@@ -263,6 +263,75 @@ public class Calculator {
             }
         });
         window.add(btnRes);
+
+        btn1 = new JButton("1");
+        btn1.setBounds(x[0],y[4],widthBtn,heightBtn);
+        btn1.setFont(btnFont);
+        btn1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn1.addActionListener(event -> {
+            if (canAddDigits) {
+            	if (display.getText().equals("0")) display.setText("1");
+                else display.setText(display.getText() + "1");
+            }
+            else {
+                display.setText("1");
+                canAddDigits = true;
+            }
+            canOperate = true;
+        });
+        window.add(btn1);
+        
+        btn2 = new JButton("2");
+        btn2.setBounds(x[1],y[4],widthBtn,heightBtn);
+        btn2.setFont(btnFont);
+        btn2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn2.addActionListener(event -> {
+            if (canAddDigits) {
+            	if (display.getText().equals("0")) display.setText("2");
+                else display.setText(display.getText() + "2");
+            }
+            else {
+                display.setText("2");
+                canAddDigits = true;
+            }
+            canOperate = true;
+        });
+        window.add(btn2);
+        
+        btn3 = new JButton("3");
+        btn3.setBounds(x[2], y[4], widthBtn, heightBtn);
+        btn3.setFont(btnFont);
+        btn3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn3.addActionListener(event -> {
+            if (canAddDigits) {
+            	if (display.getText().equals("0")) display.setText("3");
+                else display.setText(display.getText() + "3");
+            }
+            else {
+                display.setText("3");
+                canAddDigits = true;
+            }
+            canOperate = true;
+        });
+        window.add(btn3);
+        
+        btnSum = new JButton("+");
+        btnSum.setBounds(x[3], y[4], widthBtn, heightBtn);
+        btnSum.setFont(btnFont);
+        btnSum.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnSum.addActionListener(event -> {
+            if (isValidDouble(display.getText())) {
+            	if (canOperate) {
+                    val = calc(val, display.getText(), operation);
+                    if (isValidInteger(Double.toString(val))) display.setText(Integer.toString((int) val));
+                    else display.setText(Double.toString(val));
+                    canOperate = false;
+                    canAddDigits = false;
+                }
+            	operation = '+';
+            }
+        });
+        window.add(btnSum);
         
         btnEqual = new JButton("=");
         btnEqual.setBounds(x[2],y[5],2*widthBtn+10,heightBtn);
@@ -319,6 +388,7 @@ public class Calculator {
 		    case '/': return x / y;
             case '*': return x * y;
             case '-': return x - y;
+            case '+': return x + y;
 			default: break;
 		}
 
