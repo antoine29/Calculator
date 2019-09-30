@@ -332,6 +332,37 @@ public class Calculator {
             }
         });
         window.add(btnSum);
+
+        btnDot = new JButton(".");
+        btnDot.setBounds(x[0],y[5],widthBtn,heightBtn);
+        btnDot.setFont(btnFont);
+        btnDot.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnDot.addActionListener(event -> {
+            if (canAddDigits) display.setText(display.getText() + ".");
+            else {
+                display.setText("0.");
+                canAddDigits = true;
+            }
+            canOperate = true;
+        });
+        window.add(btnDot);
+        
+        btn0 = new JButton("0");
+        btn0.setBounds(x[1],y[5],widthBtn,heightBtn);
+        btn0.setFont(btnFont);
+        btn0.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn0.addActionListener(event -> {
+            if (canAddDigits) {
+            	if (display.getText().equals("0")) display.setText("0");
+                else display.setText(display.getText() + "0");
+            }
+            else {
+                display.setText("0");
+                canAddDigits = true;
+            }
+            canOperate = true;
+        });
+        window.add(btn0);
         
         btnEqual = new JButton("=");
         btnEqual.setBounds(x[2],y[5],2*widthBtn+10,heightBtn);
