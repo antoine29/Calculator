@@ -46,7 +46,7 @@ public class Calculator {
         btnColor.setBackground(Color.GREEN.darker());
         btnColor.setForeground(Color.WHITE);
         btnColor.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnColor.addActionListener(event -> System.out.println("Hi"));
+        btnColor.addActionListener(event -> toggleThemeColor());
         window.add(btnColor);
 
         int widthBtn = 80;
@@ -424,5 +424,75 @@ public class Calculator {
 		}
 
         return y;
+    }
+
+    private void toggleThemeColor() {
+        if (colorFlag) {
+            btnColor.setText("Toggle colors");
+            btnColor.setBackground(Color.GREEN.darker());
+            btnColor.setForeground(Color.WHITE);
+            btnC.setBackground(null);
+            btnBack.setBackground(null);
+            btnMod.setBackground(null);
+            btnDiv.setBackground(null);
+            btnMul.setBackground(null);
+            btnRes.setBackground(null);
+            btnSum.setBackground(null);
+            btnEqual.setBackground(null);
+            btn0.setBackground(null);
+            btn1.setBackground(null);
+            btn2.setBackground(null);
+            btn3.setBackground(null);
+            btn4.setBackground(null);
+            btn5.setBackground(null);
+            btn6.setBackground(null);
+            btn7.setBackground(null);
+            btn8.setBackground(null);
+            btn9.setBackground(null);
+            btnDot.setBackground(null);
+
+            btnC.setForeground(Color.BLACK);
+            btnBack.setForeground(Color.BLACK);
+            btnMod.setForeground(Color.BLACK);
+            btnDiv.setForeground(Color.BLACK);
+            btnMul.setForeground(Color.BLACK);
+            btnRes.setForeground(Color.BLACK);
+            btnSum.setForeground(Color.BLACK);
+            btnEqual.setForeground(Color.BLACK);
+            colorFlag = false;
+        } else {
+            btnColor.setText("Untoggle colors");
+            btnColor.setBackground(null);
+            btnColor.setForeground(Color.BLACK);
+            btnC.setBackground(Color.RED);
+            btnBack.setBackground(Color.ORANGE);
+            btnMod.setBackground(Color.GREEN);
+            btnDiv.setBackground(Color.PINK);
+            btnMul.setBackground(Color.PINK);
+            btnRes.setBackground(Color.PINK);
+            btnSum.setBackground(Color.PINK);
+            btnEqual.setBackground(Color.BLUE);
+            btn0.setBackground(Color.WHITE);
+            btn1.setBackground(Color.WHITE);
+            btn2.setBackground(Color.WHITE);
+            btn3.setBackground(Color.WHITE);
+            btn4.setBackground(Color.WHITE);
+            btn5.setBackground(Color.WHITE);
+            btn6.setBackground(Color.WHITE);
+            btn7.setBackground(Color.WHITE);
+            btn8.setBackground(Color.WHITE);
+            btn9.setBackground(Color.WHITE);
+            btnDot.setBackground(Color.WHITE);
+
+            btnC.setForeground(Color.WHITE);
+            btnBack.setForeground(Color.WHITE);
+            btnMod.setForeground(Color.WHITE);
+            btnDiv.setForeground(Color.WHITE);
+            btnMul.setForeground(Color.WHITE);
+            btnRes.setForeground(Color.WHITE);
+            btnSum.setForeground(Color.WHITE);
+            btnEqual.setForeground(Color.WHITE);
+            colorFlag = true;
+        }
     }
 }
