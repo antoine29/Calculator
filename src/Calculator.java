@@ -159,11 +159,6 @@ public class Calculator {
             canOperate = true;
         });
         window.add(btn8);
-        
-        window.setLayout(null);
-        window.setResizable(false);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // If Click into The Red Button => End The Calculator process
-        window.setVisible(true);
 
         btnEqual = new JButton("=");
         btnEqual.setBounds(x[2],y[5],2*widthBtn+10,heightBtn);
@@ -185,6 +180,11 @@ public class Calculator {
             }
         });
         window.add(btnEqual);
+        
+        window.setLayout(null);
+        window.setResizable(false);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // If Click into The Red Button => End The Calculator process
+        window.setVisible(true);
     }
 
     private boolean isValidDouble(String number) {
