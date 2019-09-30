@@ -159,12 +159,42 @@ public class Calculator {
             canOperate = true;
         });
         window.add(btn8);
-        
-        window.setLayout(null);
-        window.setResizable(false);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // If Click into The Red Button => End The Calculator process
-        window.setVisible(true);
 
+        btn9 = new JButton("9");
+        btn9.setBounds(x[2],y[2],widthBtn,heightBtn);
+        btn9.setFont(btnFont);
+        btn9.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn9.addActionListener(event -> {
+            if (canAddDigits) {
+                if (display.getText().equals("0")) display.setText("9");
+                else display.setText(display.getText() + "9");
+            }
+            else {
+                display.setText("9");
+                canAddDigits = true;
+            }
+            canOperate = true;
+        });
+        window.add(btn9);
+        
+        btnMul = new JButton("*");
+        btnMul.setBounds(x[3],y[2],widthBtn,heightBtn);
+        btnMul.setFont(btnFont);
+        btnMul.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnMul.addActionListener(event -> {
+            if (isValidDouble(display.getText())) {
+            	if (canOperate) {
+                    val = calc(val, display.getText(), operation);
+                    if (isValidInteger(String.valueOf(val))) display.setText(Integer.toString((int) val));
+                    else display.setText(Double.toString(val));
+                    canOperate = false;
+                    canAddDigits = false;
+                }
+                operation = '*';
+            }
+        });
+        window.add(btnMul);
+        
         btnEqual = new JButton("=");
         btnEqual.setBounds(x[2],y[5],2*widthBtn+10,heightBtn);
         btnEqual.setFont(btnFont);
@@ -185,6 +215,11 @@ public class Calculator {
             }
         });
         window.add(btnEqual);
+
+        window.setLayout(null);
+        window.setResizable(false);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // If Click into The Red Button => End The Calculator process
+        window.setVisible(true);
     }
 
     private boolean isValidDouble(String number) {
@@ -213,6 +248,7 @@ public class Calculator {
         switch (operation) {
 		    case '%': return x % y;
 		    case '/': return x / y;
+            case '*': return x * y;
 			default: break;
 		}
 
